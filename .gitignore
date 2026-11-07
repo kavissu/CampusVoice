@@ -1,0 +1,40 @@
+
+# Python virtual environments
+venv/
+.venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Environment variables and secrets
+.env
+.env.*
+
+# Keep the example environment file
+!.env.example
+
+# Local database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Node.js dependencies
+node_modules/
+
+# Build files
+dist/
+build/
+
+# IDE settings
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Test and coverage output
+.coverage
+htmlcov/
+.pytest_cache/
