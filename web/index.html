@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Campus Voice</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Campus Voice</h1>
+    <p>Manage campus complaints and equipment issues.</p>
+
+    <h2>Equipment issues</h2>
+    <p>Lecture Hall A: Smart board light pen is missing.</p>
+    <p>Status: Open</p>
+    <section class="ticket-form-section">
+  <h2>Add a sample ticket</h2>
+
+  <form id="ticket-form">
+    <div class="form-field">
+      <label for="ticket-location">Location</label>
+      <input
+        type="text"
+        id="ticket-location"
+        placeholder="Example: Lecture Hall C"
+        maxlength="80"
+        required
+      >
+    </div>
+
+    <div class="form-field">
+      <label for="ticket-issue">Issue description</label>
+      <textarea
+        id="ticket-issue"
+        placeholder="Example: Microphone is damaged"
+        rows="3"
+        maxlength="300"
+        required
+      ></textarea>
+    </div>
+
+    <p>New tickets will start with the status Open.</p>
+
+    <button type="submit" class="reset-button">
+      Add ticket
+    </button>
+  </form>
+</section>
+    <section class="ticket-summary" aria-label="Ticket summary">
+  <div class="summary-card">
+    <h2>Total tickets</h2>
+    <p class="summary-number" id="total-count">0</p>
+  </div>
+
+  <div class="summary-card">
+    <h2>Open</h2>
+    <p class="summary-number" id="open-count">0</p>
+  </div>
+
+  <div class="summary-card">
+    <h2>In Progress</h2>
+    <p class="summary-number" id="progress-count">0</p>
+  </div>
+
+  <div class="summary-card">
+    <h2>Resolved</h2>
+    <p class="summary-number" id="resolved-count">0</p>
+  </div>
+</section>
+    <h2>Recent tickets</h2>
+    <div class="ticket-toolbar">
+        <label for="ticket-search">Search tickets:</label>
+
+<input
+  type="search"
+  id="ticket-search"
+  placeholder="ID, location, or issue"
+>
+  <label for="status-filter">Filter by status:</label>
+  <th scope="col">Status</th>
+<th scope="col">Action</th>
+
+  <select id="status-filter">
+    <option value="all">All statuses</option>
+    <option value="Open">Open</option>
+    <option value="In Progress">In Progress</option>
+    <option value="Resolved">Resolved</option>
+  </select>
+  <button type="button" id="reset-filters" class="reset-button">
+  Reset filters
+</button>
+</div>
+
+<table id="tickets-table">
+  <thead>
+    <tr>
+      <th scope="col">Ticket ID</th>
+      <th scope="col">Location</th>
+      <th scope="col">Issue</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>CV-001</td>
+      <td>Lecture Hall A</td>
+      <td>Light pen missing</td>
+      <td><span class="status-badge status-open">Open</span></td>
+    </tr>
+
+    <tr>
+      <td>CV-002</td>
+      <td>Lecture Hall B</td>
+      <td>Projector not working</td>
+      <td>
+  <span class="status-badge status-progress">In Progress</span>
+</td>
+    </tr>
+  </tbody>
+</table>
+<p id="empty-message" class="empty-message" role="status" hidden>
+  No tickets match your search or selected status.
+</p>
+    <script src="script.js"></script>
+  </body>
+</html>
