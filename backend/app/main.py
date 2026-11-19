@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from app.api.public import router as public_router
 from app.api.auth import router as auth_router
 from app.api.users import router as users_router
-
+from app.api.tickets import router as tickets_router
 app = FastAPI(
     title="Campus Voice API",
     description="Backend API for the Campus Voice system",
@@ -34,3 +34,4 @@ app.include_router(
     tags=["Users"]
 )
 
+app.include_router(tickets_router)
