@@ -41,23 +41,27 @@ function updateSummary() {
   const ticketRows = document.querySelectorAll("#tickets-table tbody tr");
 
   let openCount = 0;
+  let acceptedCount = 0;
   let progressCount = 0;
   let resolvedCount = 0;
 
   ticketRows.forEach(function (row) {
     const status = row.cells[3].textContent.trim();
 
-    if (status === "Open") {
-      openCount++;
-    } else if (status === "In Progress") {
-      progressCount++;
-    } else if (status === "Resolved") {
-      resolvedCount++;
-    }
+   if (status === "Open") {
+  openCount++;
+} else if (status === "Accepted") {
+  acceptedCount++;
+} else if (status === "In Progress") {
+  progressCount++;
+} else if (status === "Resolved") {
+  resolvedCount++;
+}
   });
 
   document.querySelector("#total-count").textContent = ticketRows.length;
   document.querySelector("#open-count").textContent = openCount;
+  document.querySelector("#accepted-count").textContent = acceptedCount;
   document.querySelector("#progress-count").textContent = progressCount;
   document.querySelector("#resolved-count").textContent = resolvedCount;
 }
@@ -151,12 +155,13 @@ function addStatusControl(row) {
   );
 
   const badgeClasses = {
-    "Open": "status-open",
-    "In Progress": "status-progress",
-    "Resolved": "status-resolved"
-  };
+  "Open": "status-open",
+  "Accepted": "status-accepted",
+  "In Progress": "status-progress",
+  "Resolved": "status-resolved"
+};
 
-  ["Open", "In Progress", "Resolved"].forEach(function (status) {
+  ["Open", "Accepted", "In Progress", "Resolved"].forEach(function (status) {
     const option = document.createElement("option");
 
     option.value = status;
@@ -184,3 +189,4 @@ function addStatusControl(row) {
 tableBody.querySelectorAll("tr").forEach(function (row) {
   addStatusControl(row);
 });
+
