@@ -3,7 +3,7 @@ from typing import Literal
 
 from pydantic import BaseModel, Field, model_validator,ConfigDict
 from datetime import datetime
-
+from app.models.technician import Technician
 class EquipmentFaultCreate(BaseModel):
     equipment_id: int
 
@@ -49,3 +49,52 @@ class EquipmentFaultResponse(BaseModel):
     priority: str
     status: str
     reported_at: datetime
+
+class TicketHistoryResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    old_status: str | None = None
+    new_status: str | None = None
+    old_priority: str | None = None
+    new_priority: str | None = None
+    remarks: str | None = None
+    changed_at: datetime
+
+
+class TicketTrackingResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    tracking_code: str
+    ticket_type: str
+    problem_description: str
+    priority: str
+    status: str
+    reported_at: datetime
+    resolved_at: datetime | None = None
+    history: list[TicketHistoryResponse]
+
+
+
+class TechnicianTicketResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    tracking_code: str
+    ticket_type: str
+    problem_description: str
+    priority: str
+    status: str
+    reported_at: datetime
+    resolved_at: datetime | None = None
+
+class TicketStatusUpdate(BaseModel):
+    status: Literal[
+        "Accepted",
+        "In Progress",
+        "Resolved"
+    ]
+
+    remarks: str | None = Field(
+        default=None,
+        max_length=500
+    )
