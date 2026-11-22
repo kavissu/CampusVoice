@@ -83,7 +83,12 @@ function App() {
   }
 
     if (session) {
-    return <AdminDashboard onBack={signOut} />
+    return (
+  <AdminDashboard
+    onBack={signOut}
+    token={session.token}
+  />
+)
   }
 
   return (

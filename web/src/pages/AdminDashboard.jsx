@@ -81,7 +81,7 @@ const futurePages = [
   'Settings',
 ]
 
-function AdminDashboard({ onBack }) {
+function AdminDashboard({ onBack, token }) {
       const [activePage, setActivePage] = useState('Dashboard')
       const [ticketSearch, setTicketSearch] = useState('')
 const [statusFilter, setStatusFilter] = useState('All')
@@ -285,7 +285,9 @@ const visibleTickets =
   </div>
 </section>
   </>
-)}{activePage === 'Add User' && <AddUser />}
+)}{activePage === 'Add User' && (
+  <AddUser token={token} onSessionExpired={onBack} />
+)}
 
 {activePage !== 'Add User' && (
           <section className="admin-ticket-panel">

@@ -1,9 +1,70 @@
 import { useState } from 'react'
 import './AddUser.css'
+import { createUser } from '../services/users.js'
 
-function AddUser() {
+function AddUser({ token, onSessionExpired }) {
   const [role, setRole] = useState('LECTURER')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [message, setMessage] = useState('')
+  const [createdUser, setCreatedUser] = useState(null)
+
   const isTechnician = role === 'TECHNICIAN'
+
+  async function handleSubmit(event) {
+    event.preventDefault()
+
+    if (isSubmitting) return
+
+    const form = event.currentTarget
+    const formData = new FormData(form)
+
+    const departmentId = Number(formData.get('department_id'))
+    const maintenanceTeamId = Number(
+      formData.get('maintenance_team_id')
+    )
+
+    setMessage('')
+    setCreatedUser(null)
+
+    if (!Number.isInteger(departmentId) || departmentId <= 0) {
+      setMessage('Select a department before creating the account.')
+      return
+    }
+
+    if (
+      isTechnician &&
+      (!Number.isInteger(maintenanceTeamId) || maintenanceTeamId <= 0)
+    ) {
+      setMessage('Select a maintenance team for this technician.')
+      return
+    }
+
+    const userDetails = {
+      full_name: String(formData.get('full_name')).trim(),
+      email: String(formData.get('email')).trim().toLowerCase(),
+      role,
+      department_id: departmentId,
+      maintenance_team_id: isTechnician ? maintenanceTeamId : null,
+    }
+
+    setIsSubmitting(true)
+
+    try {
+      const result = await createUser(token, userDetails)
+      setCreatedUser(result)
+      form.reset()
+      setRole('LECTURER')
+    } catch (error) {
+      if (error.status === 401) {
+        onSessionExpired()
+        return
+      }
+
+      setMessage(error.message)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <section className="add-user-panel" aria-labelledby="add-user-title">
@@ -14,7 +75,7 @@ function AddUser() {
         </p>
       </header>
 
-      <form onSubmit={(event) => event.preventDefault()}>
+      <form onSubmit={handleSubmit} aria-busy={isSubmitting}>
         <fieldset className="user-role-picker">
           <legend>Account role</legend>
 
@@ -117,12 +178,56 @@ function AddUser() {
             change it at first login.
           </p>
         </div>
+            {message && (
+  <p role="alert" className="user-form-message">
+    {message}
+  </p>
+)}
 
+{createdUser && (
+  <section
+    className="user-password-note"
+    aria-labelledby="created-user-title"
+    aria-live="polite"
+  >
+    <h3 id="created-user-title">Account created successfully</h3>
+
+    <p>
+      <strong>Name:</strong> {createdUser.full_name}
+    </p>
+
+    <p>
+      <strong>Email:</strong> {createdUser.email}
+    </p>
+
+    <p>
+      <strong>Role:</strong> {createdUser.role}
+    </p>
+
+    <p>
+      <strong>Temporary password:</strong>{' '}
+      <code>{createdUser.temporary_password}</code>
+    </p>
+
+    <p>
+      Share these credentials privately with the account owner.
+      They must change their password when they first sign in.
+      The temporary password will disappear when you leave this page.
+    </p>
+
+    <button
+      type="button"
+      onClick={() => setCreatedUser(null)}
+    >
+      Dismiss account details
+    </button>
+  </section>
+)}
         <div className="user-form-actions">
           <p id="user-submit-help">
-            Creation is unavailable until administrator authentication
-            and department/team options are connected.
-          </p>
+  Account creation will become available when department and
+  maintenance-team options are connected.
+</p>
 
           <button
             type="submit"
