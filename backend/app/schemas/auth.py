@@ -17,3 +17,11 @@ class PasswordChangeResponse(BaseModel):
     message: str
     access_token: str
     token_type: str
+
+
+class CurrentUserResponse(BaseModel):
+    id: int
+    name: str
+    role: str
+    is_active: bool
+    must_change_password: bool
