@@ -264,3 +264,24 @@
 .dashboard-preview-button:hover {
   background: #edf2e9;
 }
+
+.password-guidance {
+  margin: 8px 0 0;
+  color: #656b65;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.password-back-button {
+  align-self: flex-start;
+  min-height: 44px;
+  padding: 10px 0;
+  border: 0;
+  background: transparent;
+  color: #536b58;
+  font-size: 13px;
+}
+
+.password-back-button:hover {
+  text-decoration: underline;
+}

@@ -1,5 +1,6 @@
 import './AdminDashboard.css'
 import { useState } from 'react'
+import AddUser from './AddUser.jsx'
 
 function SummaryIcon({ label }) {
   const iconPaths = {
@@ -143,7 +144,7 @@ const visibleTickets =
         <p className="sidebar-label">ADMINISTRATION</p>
 
         <nav className="admin-navigation" aria-label="Admin navigation">
-          {['Dashboard', 'Tickets'].map((page) => (
+          {['Dashboard', 'Tickets', 'Add User'].map((page) => (
   <button
     key={page}
     type="button"
@@ -187,14 +188,16 @@ const visibleTickets =
 <p>
   {activePage === 'Dashboard'
     ? 'A clear view of campus issues and maintenance activity.'
-    : 'Browse campus issues and review their progress.'}
+    : activePage === 'Tickets'
+      ? 'Browse campus issues and review their progress.'
+      : 'Create lecturer and technician accounts.'}
 </p>
           </section>
 
           <p className="admin-demo-notice" role="note">
-            Sample data only. This screen is not authenticated or connected
-            to the backend. Management actions are unavailable.
-          </p>
+  Development preview. Ticket records are samples, and account creation
+  is disabled. This workspace is not authenticated.
+</p>
 
          {activePage === 'Dashboard' && (
   <>
@@ -282,7 +285,9 @@ const visibleTickets =
   </div>
 </section>
   </>
-)}
+)}{activePage === 'Add User' && <AddUser />}
+
+{activePage !== 'Add User' && (
           <section className="admin-ticket-panel">
             <div className="admin-panel-heading">
               <div>
@@ -424,6 +429,7 @@ const visibleTickets =
               </table>
             </div>
           </section>
+          )}
         </div>
       </main>
     </div>

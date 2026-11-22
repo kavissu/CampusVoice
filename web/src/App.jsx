@@ -1,24 +1,91 @@
 import AdminDashboard from './pages/AdminDashboard.jsx'
 import { useState } from 'react'
+import ChangePassword from './pages/ChangePassword.jsx'
 import './App.css'
+import {
+  login,
+  getCurrentUser,
+  changePassword,
+} from './services/auth.js'
 
 function App() {
   const [showPassword, setShowPassword] = useState(false)
   const [message, setMessage] = useState('')
-  const [previewDashboard, setPreviewDashboard] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [session, setSession] = useState(null)
 
-  function handleLogin(event) {
+  function signOut() {
+    setSession(null)
+    setMessage('')
+    setShowPassword(false)
+  }
+
+  async function handleLogin(event) {
     event.preventDefault()
 
-    setMessage(
-      'This is a design preview. Backend login is not connected yet.'
+    if (isLoading) return
+
+    const formData = new FormData(event.currentTarget)
+    const email = String(formData.get('email')).trim()
+    const password = String(formData.get('password'))
+
+    setMessage('')
+    setIsLoading(true)
+
+    try {
+      const result = await login(email, password)
+      const user = await getCurrentUser(result.access_token)
+
+      if (!user.is_active || user.role !== 'ADMIN') {
+        setMessage('This portal is available to administrators only.')
+        return
+      }
+
+      setSession({
+        token: result.access_token,
+        user,
+      })
+    } catch (error) {
+      setMessage(error.message)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  async function handlePasswordChange(currentPassword, newPassword) {
+    try {
+      await changePassword(
+        session.token,
+        currentPassword,
+        newPassword
+      )
+    } catch (error) {
+      if (error.status === 401) {
+        signOut()
+        setMessage('Your session has expired. Please sign in again.')
+        return
+      }
+
+      throw error
+    }
+
+    signOut()
+    setMessage('Password changed successfully. Sign in with your new password.')
+  }
+
+  if (session?.user.must_change_password) {
+    return (
+      <ChangePassword
+        onBack={signOut}
+        onSubmitPassword={handlePasswordChange}
+      />
     )
   }
-if (import.meta.env.DEV && previewDashboard) {
-  return (
-    <AdminDashboard onBack={() => setPreviewDashboard(false)} />
-  )
-}
+
+    if (session) {
+    return <AdminDashboard onBack={signOut} />
+  }
+
   return (
     <main className="login-page">
       <div className="login-shell">
@@ -73,10 +140,14 @@ if (import.meta.env.DEV && previewDashboard) {
                 Show password
               </label>
 
-              <button className="signin-button" type="submit">
-                Sign in
-                <span aria-hidden="true">↗</span>
-              </button>
+              <button
+  className="signin-button"
+  type="submit"
+  disabled={isLoading}
+>
+  {isLoading ? 'Signing in…' : 'Sign in'}
+  <span aria-hidden="true">↗</span>
+</button>
 
               <p className="login-message" role="status">
                 {message}
@@ -113,18 +184,7 @@ if (import.meta.env.DEV && previewDashboard) {
         </aside>
       </div>
 
-      <p className="preview-note">
-        Interface preview — administrator authentication is not connected yet.
-      </p>
-      {import.meta.env.DEV && (
-  <button
-    className="dashboard-preview-button"
-    type="button"
-    onClick={() => setPreviewDashboard(true)}
-  >
-    Open dashboard preview — sample data
-  </button>
-)}
+      
     </main>
   )
 }
