@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Campus Voice</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header class="site-header">
+  <a class="brand" href="#home" aria-label="CampusVoice home">
+    <span class="brand-icon" aria-hidden="true">CV</span>
+    <span>Campus<span class="brand-accent">Voice</span></span>
+  </a>
+
+  <nav class="main-nav" aria-label="Main navigation">
+    <a href="#home">Home</a>
+    <a href="#resources">Resources</a>
+    <a href="#complaints">Complaints</a>
+    <a href="#announcements">Announcements</a>
+    <a href="#about">About Us</a>
+  </nav>
+
+  <div class="header-search">
+    <label class="visually-hidden" for="site-search">
+      Search CampusVoice — coming soon
+    </label>
+    <input
+      id="site-search"
+      type="search"
+      placeholder="Search resources, complaints and more…"
+      disabled
+    >
+  </div>
+
+  <div class="account-actions">
+    <button
+      class="notification-button"
+      type="button"
+      aria-label="Notifications — coming soon"
+      disabled
+    >
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
+        <path d="M10 21h4"/>
+      </svg>
+    </button>
+
+    <button class="login-button" type="button" disabled>
+      Login
+    </button>
+
+    <button class="signup-button" type="button" disabled>
+      Sign Up
+    </button>
+  </div>
+</header>
+
+<p class="header-preview-note">
+  Navigation preview · Search, notifications and account buttons
+  are not connected yet.
+</p>
+    <section class="hero-banner" id="home" aria-labelledby="hero-title">
+  <div class="hero-content">
+    <span class="hero-label">
+      A better campus starts with you
+    </span>
+
+    <h1 id="hero-title">
+      Your Campus.<br>
+      Your Voice.<br>
+      <span>Your Community.</span>
+    </h1>
+
+    <p class="hero-description">
+      Stay connected with your university. Access resources,
+      report issues and make your campus a better place.
+    </p>
+
+    <div class="hero-actions">
+      <a class="hero-primary" href="#resources">
+        Explore Resources <span aria-hidden="true">↗</span>
+      </a>
+
+      <a class="hero-secondary" href="#report-issue">
+        Submit a Complaint <span aria-hidden="true">→</span>
+      </a>
+    </div>
+
+    <p class="hero-note">
+      Website preview · Complaint submission currently creates
+      a sample ticket only.
+    </p>
+  </div>
+
+  <div class="hero-visual">
+    <img
+      class="hero-photo"
+      src="images/campus.jpg"
+      alt="University campus"
+      width="900"
+      height="1000"
+    >
+
+    <div class="hero-image-caption">
+      <span class="hero-caption-icon" aria-hidden="true">↗</span>
+      <div>
+        <strong>Connected campus. Shared progress.</strong>
+        <span>Small actions make a difference.</span>
+      </div>
+    </div>
+  </div>
+</section>
+<section
+  class="resources-section"
+  id="resources"
+  aria-labelledby="resources-title"
+>
+  <div class="section-heading">
+    <div>
+      <p class="section-eyebrow">EXPLORE YOUR CAMPUS</p>
+      <h2 id="resources-title">Available University Resources</h2>
+    </div>
+
+    <span class="preview-label">Catalogue preview</span>
+  </div>
+
+  <p class="section-description">
+    A place to discover campus equipment and facilities.
+    Live inventory and availability are not connected yet.
+  </p>
+
+  <div class="resource-grid">
+    <article class="resource-card">
+      <div class="resource-art resource-art-classroom" aria-hidden="true">
+        <svg viewBox="0 0 240 150" fill="none">
+          <rect x="37" y="20" width="166" height="91" rx="8"/>
+          <path d="M120 111v20M91 131h58"/>
+          <path d="M66 49h75M66 64h108M66 79h51"/>
+          <circle cx="173" cy="44" r="8"/>
+        </svg>
+      </div>
+
+      <div class="resource-card-content">
+        <span class="resource-category">LEARNING SPACES</span>
+        <h3>Lecture Hall Equipment</h3>
+        <p>
+          Projectors, microphones and other equipment
+          used during lectures.
+        </p>
+        <span class="resource-coming-soon">
+          Equipment listings coming soon
+        </span>
+      </div>
+    </article>
+
+    <article class="resource-card">
+      <div class="resource-art resource-art-digital" aria-hidden="true">
+        <svg viewBox="0 0 240 150" fill="none">
+          <rect x="51" y="23" width="138" height="88" rx="7"/>
+          <path d="M51 97h138M102 111v20M138 111v20M84 131h72"/>
+          <path d="m101 49-15 13 15 13M139 49l15 13-15 13"/>
+          <path d="m125 44-10 36"/>
+        </svg>
+      </div>
+
+      <div class="resource-card-content">
+        <span class="resource-category">DIGITAL LEARNING</span>
+        <h3>Computing Equipment</h3>
+        <p>
+          Computers, displays and supporting
+          academic technology.
+        </p>
+        <span class="resource-coming-soon">
+          Equipment listings coming soon
+        </span>
+      </div>
+    </article>
+
+    <article class="resource-card">
+      <div class="resource-art resource-art-accessories" aria-hidden="true">
+        <svg viewBox="0 0 240 150" fill="none">
+          <rect x="68" y="35" width="104" height="93" rx="8"/>
+          <path d="M97 35V24h46v11M68 65h104"/>
+          <path d="M110 65v12h20V65"/>
+          <path d="M91 98h58M91 111h34"/>
+        </svg>
+      </div>
+
+      <div class="resource-card-content">
+        <span class="resource-category">EVERYDAY ESSENTIALS</span>
+        <h3>Teaching Accessories</h3>
+        <p>
+          Smart-board pens, remotes and accessories
+          that support classroom activities.
+        </p>
+        <span class="resource-coming-soon">
+          Equipment listings coming soon
+        </span>
+      </div>
+    </article>
+  </div>
+</section>
+<section
+  class="announcements-section"
+  id="announcements"
+  aria-labelledby="announcements-title"
+>
+  <div class="section-heading">
+    <div>
+      <p class="section-eyebrow">STAY IN THE LOOP</p>
+      <h2 id="announcements-title">Recent Announcements</h2>
+    </div>
+
+    <span class="preview-label">Coming soon</span>
+  </div>
+
+  <div class="announcement-panel">
+    <div class="announcement-icon" aria-hidden="true">
+      <svg
+        viewBox="0 0 64 64"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M12 26h12l24-12v36L24 38H12z"/>
+        <path d="m18 38 5 14h8l-5-13"/>
+        <path d="M55 25v14"/>
+      </svg>
+    </div>
+
+    <div class="announcement-copy">
+      <span class="resource-category">CAMPUS NOTICEBOARD</span>
+      <h3>A space for campus updates.</h3>
+      <p>
+        University notices and service updates will appear here
+        once the announcements feature is available.
+      </p>
+      <span class="announcement-note">
+        Preview only — no live announcements are connected.
+      </span>
+    </div>
+  </div>
+</section>
+<section class="quick-access" aria-labelledby="quick-access-title">
+  <div class="section-heading">
+    <div>
+      <p class="section-eyebrow">LESS SEARCHING. MORE DOING.</p>
+      <h2 id="quick-access-title">Quick Access Services</h2>
+    </div>
+  </div>
+
+  <div class="quick-access-grid">
+    <a class="service-card" href="#resources">
+      <span class="service-symbol" aria-hidden="true">▦</span>
+      <span class="service-copy">
+        <strong>Explore Resources</strong>
+        <span>Browse the resource catalogue preview.</span>
+      </span>
+      <span class="service-arrow" aria-hidden="true">↗</span>
+    </a>
+
+    <a class="service-card" href="#report-issue">
+      <span class="service-symbol" aria-hidden="true">＋</span>
+      <span class="service-copy">
+        <strong>Report an Issue</strong>
+        <span>Try the sample complaint form.</span>
+      </span>
+      <span class="service-arrow" aria-hidden="true">↗</span>
+    </a>
+
+    <a class="service-card" href="#complaints">
+      <span class="service-symbol" aria-hidden="true">☷</span>
+      <span class="service-copy">
+        <strong>View Issue Updates</strong>
+        <span>Search and filter your sample tickets.</span>
+      </span>
+      <span class="service-arrow" aria-hidden="true">↗</span>
+    </a>
+  </div>
+</section>
+    <section class="ticket-form-section" id="report-issue">
+  <h2>Add a sample ticket</h2>
+
+  <form id="ticket-form">
+    <div class="form-field">
+      <label for="ticket-location">Location</label>
+      <input
+        type="text"
+        id="ticket-location"
+        placeholder="Example: Lecture Hall C"
+        maxlength="80"
+        required
+      >
+    </div>
+
+    <div class="form-field">
+      <label for="ticket-issue">Issue description</label>
+      <textarea
+        id="ticket-issue"
+        placeholder="Example: Microphone is damaged"
+        rows="3"
+        maxlength="300"
+        required
+      ></textarea>
+    </div>
+
+    <p>New tickets will start with the status Open.</p>
+
+    <button type="submit" class="reset-button">
+      Add ticket
+    </button>
+  </form>
+</section>
+    <section class="ticket-summary" aria-label="Ticket summary">
+  <div class="summary-card">
+    <h2>Total tickets</h2>
+    <p class="summary-number" id="total-count">0</p>
+  </div>
+
+  <div class="summary-card">
+    <h2>Open</h2>
+    <p class="summary-number" id="open-count">0</p>
+  </div>
+
+  <div class="summary-card">
+  <h2>Accepted</h2>
+  <p class="summary-number" id="accepted-count">0</p>
+</div>
+
+  <div class="summary-card">
+    <h2>In Progress</h2>
+    <p class="summary-number" id="progress-count">0</p>
+  </div>
+
+  <div class="summary-card">
+    <h2>Resolved</h2>
+    <p class="summary-number" id="resolved-count">0</p>
+  </div>
+</section>
+    <h2 id="complaints">Recent tickets</h2>
+    <div class="ticket-toolbar">
+        <label for="ticket-search">Search tickets:</label>
+
+<input
+  type="search"
+  id="ticket-search"
+  placeholder="ID, location, or issue"
+>
+  <label for="status-filter">Filter by status:</label>
+
+  <select id="status-filter">
+    <option value="all">All statuses</option>
+    <option value="Open">Open</option>
+    <option value="Accepted">Accepted</option>
+    <option value="In Progress">In Progress</option>
+    <option value="Resolved">Resolved</option>
+  </select>
+  <button type="button" id="reset-filters" class="reset-button">
+  Reset filters
+</button>
+</div>
+<p class="table-scroll-hint">
+  On smaller screens, scroll sideways inside the table to see all columns.
+</p>
+
+<div
+  class="table-scroll"
+  role="region"
+  aria-label="Recent tickets"
+  tabindex="0"
+>
+<table id="tickets-table">
+  <thead>
+  <tr>
+    <th scope="col">Ticket ID</th>
+    <th scope="col">Location</th>
+    <th scope="col">Issue</th>
+    <th scope="col">Status</th>
+    <th scope="col">Action</th>
+  </tr>
+</thead>
+
+  <tbody>
+    <tr>
+      <td>CV-001</td>
+      <td>Lecture Hall A</td>
+      <td>Light pen missing</td>
+      <td><span class="status-badge status-open">Open</span></td>
+    </tr>
+
+    <tr>
+      <td>CV-002</td>
+      <td>Lecture Hall B</td>
+      <td>Projector not working</td>
+      <td>
+  <span class="status-badge status-progress">In Progress</span>
+</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p id="empty-message" class="empty-message" role="status" hidden>
+  No tickets match your search or selected status.
+</p>
+<section class="about-section" id="about" aria-labelledby="about-title">
+  <div class="about-introduction">
+    <p class="section-eyebrow">BUILT FOR OUR CAMPUS</p>
+    <h2 id="about-title">One campus. A shared responsibility.</h2>
+
+    <p>
+      CampusVoice is a university project designed to bring
+      complaint reporting, equipment information and maintenance
+      coordination into one place.
+    </p>
+
+    <p>
+      Our goal is to help students, lecturers and service staff
+      communicate issues clearly and follow their progress.
+    </p>
+  </div>
+
+  <div class="about-project">
+    <span class="resource-category">THE PROJECT</span>
+    <h3>CampusVoice</h3>
+    <p>
+      Faculty of Engineering<br>
+      University of Sri Jayewardenepura
+    </p>
+    <span class="preview-label">Group 08 · CO2307</span>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <a class="brand" href="#home">
+    <span class="brand-icon" aria-hidden="true">CV</span>
+    <span>Campus<span class="brand-accent">Voice</span></span>
+  </a>
+
+  <p>University Complaint and Resource Management System</p>
+
+  <a class="back-to-top" href="#home">
+    Back to home <span aria-hidden="true">↑</span>
+  </a>
+</footer>
+    <script src="script.js"></script>
+  </body>
+</html>

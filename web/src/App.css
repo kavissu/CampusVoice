@@ -1,0 +1,266 @@
+.login-page {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px;
+}
+
+.login-shell {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  max-width: 1180px;
+  min-height: 700px;
+  margin: 0 auto;
+  padding: 14px;
+  border: 1px solid #e4e7df;
+  border-radius: 28px;
+  background: #ffffff;
+}
+
+.login-panel {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 28px 44px;
+}
+
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.login-brand span {
+  color: #536b58;
+  font-weight: 800;
+}
+
+.login-content {
+  width: 100%;
+  max-width: 350px;
+  margin: auto;
+  padding: 60px 0;
+}
+
+.eyebrow {
+  margin: 0 0 16px;
+  color: #536b58;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.login-content h1 {
+  margin: 0;
+  font-size: clamp(32px, 4vw, 42px);
+  font-weight: 600;
+  letter-spacing: -1.5px;
+}
+
+.login-description {
+  margin: 12px 0 32px;
+  color: #656b65;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.login-field {
+  margin-bottom: 22px;
+}
+
+.login-field label {
+  display: block;
+  margin-bottom: 9px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.login-field input {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid #d9ded6;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #252925;
+  font-size: 16px;
+}
+
+.login-field input::placeholder {
+  color: #757b75;
+}
+
+.login-field input:hover {
+  border-color: #98a494;
+}
+
+.password-toggle {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: fit-content;
+  min-height: 44px;
+  margin: -6px 0 18px;
+  color: #656b65;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.password-toggle input {
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  accent-color: #536b58;
+}
+
+.signin-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 9px;
+  background: #252925;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.signin-button:hover {
+  background: #536b58;
+}
+
+.signin-button span {
+  font-size: 20px;
+}
+
+.login-message {
+  margin: 14px 0 0;
+  color: #536b58;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.login-message:empty {
+  display: none;
+}
+
+.login-help {
+  margin: 24px 0 0;
+  color: #656b65;
+  font-size: 12px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.login-footer {
+  margin: 0;
+  color: #656b65;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.login-visual {
+  display: flex;
+  align-items: flex-end;
+  min-width: 0;
+  padding: 40px;
+  border-radius: 20px;
+  background-color: #718171;
+  background-image:
+    linear-gradient(
+      180deg,
+      #16201900 20%,
+      #16201966 55%,
+      #162019f2 100%
+    ),
+    url("/images/campus.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.visual-label {
+  color: #e5eee3;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.visual-content h2 {
+  margin: 20px 0 16px;
+  color: #ffffff;
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 500;
+  letter-spacing: -1px;
+  line-height: 1.2;
+}
+
+.visual-content p {
+  max-width: 360px;
+  margin: 0;
+  color: #e5eee3;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.preview-note {
+  margin: 18px 0 0;
+  color: #656b65;
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  .login-page {
+    padding: 16px;
+  }
+
+  .login-shell {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: auto;
+    max-width: 500px;
+  }
+
+  .login-panel {
+    padding: 24px;
+  }
+
+  .login-content {
+    padding: 48px 0;
+  }
+
+  .login-visual {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .signin-button {
+    transition: none;
+  }
+}
+
+.dashboard-preview-button {
+  align-self: center;
+  max-width: 100%;
+  margin-top: 14px;
+  padding: 12px 18px;
+  border: 1px solid #dce3d7;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #455b47;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.dashboard-preview-button:hover {
+  background: #edf2e9;
+}
