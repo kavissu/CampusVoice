@@ -166,10 +166,21 @@
   padding: 12px 20px;
   border: 0;
   border-radius: 8px;
-  background: #e5e9df;
-  color: #626c5b;
+  background: #193b30;
+  color: #ffffff;
   font-size: 13px;
   font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.user-form-actions button:hover:not(:disabled) {
+  background: #28513f;
+}
+
+.user-form-actions button:disabled {
+  background: #e5e9df;
+  color: #626c5b;
   cursor: not-allowed;
 }
 
@@ -187,4 +198,113 @@
     flex-direction: column;
     align-items: stretch;
   }
+}
+
+.account-created-dialog {
+  width: min(520px, calc(100vw - 32px));
+  max-height: calc(100dvh - 48px);
+  margin: auto;
+  padding: 0;
+  overflow-y: auto;
+  border: 1px solid #dde3d8;
+  border-radius: 24px;
+  background: #ffffff;
+  color: #252925;
+  box-shadow: 0 24px 80px rgb(25 59 48 / 18%);
+}
+
+.account-created-dialog::backdrop {
+  background: rgb(20 30 24 / 45%);
+  backdrop-filter: blur(4px);
+}
+
+.account-created-content {
+  padding: clamp(24px, 5vw, 36px);
+}
+
+.account-created-label {
+  margin: 0 0 12px;
+  color: #536b58;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.account-created-content h2 {
+  margin: 0 0 12px;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+#account-created-description,
+.account-created-guidance {
+  color: #667064;
+  line-height: 1.6;
+}
+
+.account-created-details {
+  margin: 24px 0;
+}
+
+.account-created-details > div {
+  padding: 12px 0;
+  border-bottom: 1px solid #e8ece5;
+}
+
+.account-created-details dt {
+  margin-bottom: 5px;
+  color: #667064;
+  font-size: 13px;
+}
+
+.account-created-details dd {
+  margin: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.account-created-password {
+  padding: 18px;
+  border: 1px solid #dde3d8;
+  border-radius: 12px;
+  background: #f5f6f2;
+}
+
+.account-created-password p {
+  margin: 0 0 10px;
+  color: #536b58;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.account-created-password code {
+  font-size: 20px;
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+
+.account-created-guidance {
+  margin: 18px 0 24px;
+  font-size: 13px;
+}
+
+.account-created-dismiss {
+  width: 100%;
+  padding: 14px 20px;
+  border: 0;
+  border-radius: 12px;
+  background: #193b30;
+  color: #ffffff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.account-created-dismiss:hover {
+  background: #28513f;
+}
+
+.account-created-dismiss:focus-visible {
+  outline: 3px solid #91a984;
+  outline-offset: 3px;
 }

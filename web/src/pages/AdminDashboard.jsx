@@ -75,7 +75,6 @@ const futurePages = [
   'Users',
   'Maintenance',
   'Campus',
-  'Complaints',
   'Notifications',
   'Reports',
   'Settings',
@@ -151,7 +150,7 @@ const visibleTickets =
     aria-current={activePage === page ? 'page' : undefined}
     onClick={() => setActivePage(page)}
   >
-    <span>{page}</span>
+    <span>{page === 'Tickets' ? 'Complaints / Tickets' : page}</span>
     <span aria-hidden="true">
       {activePage === page ? '↗' : '→'}
     </span>
@@ -176,14 +175,18 @@ const visibleTickets =
 
       <main className="admin-main">
         <header className="admin-topbar">
-          <span>Workspace / {activePage}</span>
+          <span>
+  Workspace / {activePage === 'Tickets' ? 'Complaints / Tickets' : activePage}
+</span>
           <span className="admin-preview-badge">Preview mode</span>
         </header>
 
         <div className="admin-content">
           <section className="dashboard-heading">
             <p className="admin-eyebrow">CAMPUS OVERVIEW</p>
-            <h1 id="dashboard-heading">{activePage}</h1>
+            <h1 id="dashboard-heading">
+  {activePage === 'Tickets' ? 'Complaints / Tickets' : activePage}
+</h1>
 
 <p>
   {activePage === 'Dashboard'
@@ -195,8 +198,7 @@ const visibleTickets =
           </section>
 
           <p className="admin-demo-notice" role="note">
-  Development preview. Ticket records are samples, and account creation
-  is disabled. This workspace is not authenticated.
+  Account creation is connected. Ticket records and dashboard statistics currently use sample data.
 </p>
 
          {activePage === 'Dashboard' && (

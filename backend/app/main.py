@@ -1,6 +1,6 @@
 
 from fastapi import FastAPI
-
+from app.api.reference import router as reference_router
 from app.api.public import router as public_router
 from app.api.auth import router as auth_router
 from app.api.users import router as users_router
@@ -35,3 +35,4 @@ app.include_router(
 )
 
 app.include_router(tickets_router)
+app.include_router(reference_router)
